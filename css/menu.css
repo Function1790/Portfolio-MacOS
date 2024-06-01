@@ -1,0 +1,44 @@
+.menu {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.16);
+    backdrop-filter: blur(100px);
+    align-items: center;
+    padding: 0 25px;
+    height: 40px;
+    width: 100%;
+}
+
+.menu > * {
+    flex: 1;
+}
+
+.menu-header {
+    justify-content: start;
+    align-items: center;
+}
+
+.menu-footer {
+    justify-content: end;
+    align-items: center;
+}
+
+.menu-header > * {
+    margin-right: 15px;
+}
+
+.menu-logo {
+    width: 20px;
+}
+
+.menu-logo-img {
+    width: 100%;
+}
+
+.menu-username {
+    font-weight: 700;
+}
+
+.menu-tool {
+    margin: 0 10px;
+    cursor: pointer;
+}

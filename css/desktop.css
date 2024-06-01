@@ -1,0 +1,49 @@
+.desktop {
+    width: 100vw;
+    height: 100vh;
+}
+
+.program {
+    z-index: 5;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    width: 600px;
+    height: 600px;
+    background-color: rgb(31, 31, 31);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.program-topbar {
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.056);
+}
+
+.program-topbar>* {
+    flex: 1;
+}
+
+.program-topbar-buttons {
+    margin-left: 15px;
+    align-items: center;
+}
+
+.program-circle {
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    border-radius: 50%;
+}
+
+.circle1 {
+    background-color: #fe645c;
+}
+
+.circle2 {
+    background-color: #fdbd3d;
+}
+
+.circle3 {
+    background-color: #2fc745;
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="icon" href="/img/logo.png" />
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" href="/css/dock.css">
+    <link rel="stylesheet" href="/css/desktop.css">
+</head>
+
+<body>
+    <div class="root flex-col">
+        <div class="menu flex-row">
+            <div class="menu-header flex-row">
+                <div class="menu-logo">
+                    <img src="/img/logo.png" class="menu-logo-img">
+                </div>
+                <div class="menu-username text">root</div>
+                <div class="menu-tool-wrap flex-row">
+                    <div class="menu-tool">파일</div>
+                    <div class="menu-tool">편집</div>
+                    <div class="menu-tool">보기</div>
+                    <div class="menu-tool">이동</div>
+                    <div class="menu-tool">윈도우</div>
+                    <div class="menu-tool">도움말</div>
+                </div>
+            </div>
+            <div class="menu-footer flex-row">
+                <div class="menu-clock">5월6일(일)19:40</div>
+            </div>
+        </div>
+        <div class="desktop">
+            <div class="program github">
+                <div class="program-topbar flex-row">
+                    <div class="program-topbar-buttons flex-row">
+                        <div class="program-circle circle1"></div>
+                        <div class="program-circle circle2"></div>
+                        <div class="program-circle circle3"></div>
+                    </div>
+                    <div class="program-title center">Github</div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <div class="dock-wrap">
+            <div class="dock flex-row center">
+                <div class="program-icon-wrap">
+                    <img src="/img/icon/safari.png" class="program-icon">
+                </div>
+                <div class="program-icon-wrap">
+                    <img src="/img/icon/vscode.png" class="program-icon">
+                </div>
+                <div class="program-icon-wrap">
+                    <img src="/img/icon/terminal.png" class="program-icon">
+                </div>
+                <div class="program-icon-wrap">
+                    <img src="/img/icon/calc.png" class="program-icon">
+                </div>
+                <div class="program-icon-wrap">
+                    <img src="/img/icon/notion.png" class="program-icon">
+                </div>
+                <div class="program-icon-wrap">
+                    <img src="/img/icon/github.png" class="program-icon">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/src/menu.clock.js"></script>
+    <script src="/src/dock.js"></script>
+    <script src="/src/program.js"></script>
+</body>
+
+</html>
