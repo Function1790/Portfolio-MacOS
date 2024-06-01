@@ -39,6 +39,12 @@
 }
 
 .menu-tool {
-    margin: 0 10px;
+    height: 100%;
+    padding: 10px 15px;
+    margin: 0 5px;
     cursor: pointer;
+}
+
+.menu-tool:hover {
+    background-color: rgba(0, 0, 0, 0.111);
 }

@@ -1,0 +1,39 @@
+.github {
+    background-color: #0d1117;
+}
+
+.github-head {
+    padding: 20px;
+
+}
+
+.github-profile {
+    width: 100px;
+    border: 3px solid #30353c;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.github-profile>img {
+    width: 100%;
+}
+
+.github-name {
+    font-size: 25px;
+    margin-left: 20px;
+}
+
+.github-repository {
+    height: 120px;
+    padding: 20px;
+    border-bottom: 2px solid #30353c;
+}
+
+.repository-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.repository-content {
+    margin-left: 2px;
+}

@@ -4,12 +4,14 @@
 }
 
 .program {
+    display: flex;
+    flex-direction: column;
     z-index: 5;
     position: absolute;
     top: 100px;
     left: 100px;
-    width: 600px;
-    height: 600px;
+    width: 700px;
+    height: 700px;
     background-color: rgb(31, 31, 31);
     border-radius: 10px;
     overflow: hidden;
@@ -46,4 +48,9 @@
 
 .circle3 {
     background-color: #2fc745;
+}
+
+.program-content {
+    width: 100%;
+    flex: 1;
 }

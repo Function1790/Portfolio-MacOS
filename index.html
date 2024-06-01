@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/menu.css">
     <link rel="stylesheet" href="/css/dock.css">
     <link rel="stylesheet" href="/css/desktop.css">
+    <link rel="stylesheet" href="/css/programs.css">
 </head>
 
 <body>
@@ -19,7 +20,7 @@
                 <div class="menu-logo">
                     <img src="/img/logo.png" class="menu-logo-img">
                 </div>
-                <div class="menu-username text">root</div>
+                <div class="menu-tool menu-username text">root</div>
                 <div class="menu-tool-wrap flex-row">
                     <div class="menu-tool">파일</div>
                     <div class="menu-tool">편집</div>
@@ -34,17 +35,7 @@
             </div>
         </div>
         <div class="desktop">
-            <div class="program github">
-                <div class="program-topbar flex-row">
-                    <div class="program-topbar-buttons flex-row">
-                        <div class="program-circle circle1"></div>
-                        <div class="program-circle circle2"></div>
-                        <div class="program-circle circle3"></div>
-                    </div>
-                    <div class="program-title center">Github</div>
-                    <div></div>
-                </div>
-            </div>
+            <script src="/src/program.js"></script>
         </div>
         <div class="dock-wrap">
             <div class="dock flex-row center">
@@ -64,14 +55,13 @@
                     <img src="/img/icon/notion.png" class="program-icon">
                 </div>
                 <div class="program-icon-wrap">
-                    <img src="/img/icon/github.png" class="program-icon">
+                    <img onclick="runProgram('github')" src="/img/icon/github.png" class="program-icon">
                 </div>
             </div>
         </div>
     </div>
     <script src="/src/menu.clock.js"></script>
     <script src="/src/dock.js"></script>
-    <script src="/src/program.js"></script>
 </body>
 
 </html>
