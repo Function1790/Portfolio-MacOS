@@ -2,6 +2,8 @@ const desktopHTML = document.getElementsByClassName("desktop")[0]
 var programsHTML = document.getElementsByClassName("program")
 var programList = []
 
+var lastFocusedProgram = null;
+
 function programHTML(name, contentHTML) {
     return `
     <div class="program ${name}">
@@ -41,7 +43,8 @@ function getGithub() {
 }
 
 function reload() {
-    programsHTML = document.getElementsByClassName("program")
+    //programList.push(new Program(programsHTML[programsHTML.length - 1]))
+    //console.log(programList[0].element)
     programList = []
     for (var i = 0; i < programsHTML.length; i++) {
         programList.push(new Program(programsHTML[i]))
@@ -64,15 +67,31 @@ function onMousemove(e) {
     }
 }
 
+function onFocus(event) {
+    if (lastFocusedProgram) {
+        lastFocusedProgram.style.zIndex = 1
+    }
+    this.style.zIndex = 1000
+    lastFocusedProgram = this
+}
+
+// TODO : click 중첩
 class Program {
     constructor(element) {
         this.element = element
+        element.onmousedown = onFocus
         this.topbar = element.getElementsByClassName("program-topbar")[0]
         this.topbar.parent = this
         this.topbar.onmousemove = onMousemove
         this.pos = [0, 0]
         this.isClicked = false
-        this.setLocation(100, 100)
+        if (element.style.left != "") {
+            var _pos = [element.style.left.replace("px", ""), element.style.top.replace("px", "")]
+            var _pos = [Number(_pos[0]), Number(_pos[1])]
+            this.setLocation(_pos[0], _pos[1])
+        } else {
+            this.setLocation(100, 100)
+        }
     }
     setLocation(x, y) {
         this.element.style.left = `${x}px`
