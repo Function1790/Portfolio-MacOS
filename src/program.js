@@ -106,7 +106,7 @@ function openProgram(name) {
     for(var i=0; i<programsHTML.length; i++){
         if(programsHTML[i].className.indexOf(name)!=-1){
             programsHTML[i].classList.remove('hidden')
-            programsHTML[i].onFocus(null)
+            onFocus(null, programsHTML[i], '0.1s')
             break
         }
     }
@@ -119,12 +119,13 @@ function onMousemove(e) {
     }
 }
 
-function onFocus(event) {
+function onFocus(event, target=this, transition='0s') {
     if (lastFocusedProgram) {
         lastFocusedProgram.style.zIndex = 1
     }
-    this.style.zIndex = 1000
-    lastFocusedProgram = this
+    target.style.zIndex = 10
+    target.style.transition = transition;
+    lastFocusedProgram = target
 }
 
 // TODO : click 중첩
@@ -146,6 +147,7 @@ class Program {
         }
         this.headButtons = element.getElementsByClassName('program-circle')
         this.headButtons[0].onclick = () => {
+            this.element.style.transition = '0.1s';
             this.element.classList.add('hidden')
         }
     }

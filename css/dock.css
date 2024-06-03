@@ -9,7 +9,7 @@
 }
 
 .dock {
-    background-color: rgba(0, 0, 0, 0.281);
+    background-color: rgba(255, 255, 255, 0.281);
     backdrop-filter: blur(20px);
     height: 80px;
     border-radius: 20px;
@@ -35,4 +35,12 @@
 .focus-around {
     transform: translateY(-2px);
     width:  72px;
+}
+
+.program-icon-slash {
+    width: 3px;
+    height: 80%;
+    background-color: rgba(0, 0, 0, 0.226);
+    border-radius: 50px;
+    margin: 0 10px;
 }
