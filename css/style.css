@@ -18,6 +18,10 @@
     scrollbar-width: none;
 }
 
+body::-webkit-scrollbar {
+    display: none;
+}
+
 body {
     background-image: url('/img/background.jpg');
     background-size: 100vw 100vh;

@@ -4,9 +4,13 @@ var programList = []
 
 var lastFocusedProgram = null;
 
-function programHTML(name, contentHTML) {
+function print(data) {
+    console.log(data)
+}
+
+function programHTML(name, contentHTML, hidden = "hidden") {
     return `
-    <div class="program ${name}">
+    <div class="program ${name} hidden">
                 <div class="program-topbar flex-row">
                     <div class="program-topbar-buttons flex-row">
                         <div class="program-circle circle1"></div>
@@ -42,21 +46,69 @@ function getGithub() {
     `)
 }
 
+function getCalc() {
+    return programHTML('calc', `<div class="calc-root flex-col">
+    <div class="calc-result-area flex-col"></div>
+    <div class="calc-button-area flex-col">
+        <div class="calc-row flex-row">
+            <div class="calc-button">AC</div>
+            <div class="calc-button">±</div>
+            <div class="calc-button">%</div>
+            <div class="calc-button">÷</div>
+        </div>
+        <div class="calc-row flex-row">
+            <div class="calc-button">7</div>
+            <div class="calc-button">8</div>
+            <div class="calc-button">9</div>
+            <div class="calc-button">×</div>
+        </div>
+        <div class="calc-row flex-row">
+            <div class="calc-button">4</div>
+            <div class="calc-button">5</div>
+            <div class="calc-button">6</div>
+            <div class="calc-button">-</div>
+        </div>
+        <div class="calc-row flex-row">
+            <div class="calc-button">1</div>
+            <div class="calc-button">2</div>
+            <div class="calc-button">3</div>
+            <div class="calc-button">+</div>
+        </div>
+        <div class="calc-row flex-row">
+            <div class="calc-button calc-long">0</div>
+            <div class="calc-button">.</div>
+            <div class="calc-button">=</div>
+        </div>
+    </div>
+</div>`)
+}
+
 function reload() {
     //programList.push(new Program(programsHTML[programsHTML.length - 1]))
     //console.log(programList[0].element)
     programList = []
     for (var i = 0; i < programsHTML.length; i++) {
+        if (programsHTML[i].className.indexOf("calc") != -1) {
+            programList.push(new Calculator(programsHTML[i]))
+            continue
+        }
         programList.push(new Program(programsHTML[i]))
     }
 }
 
-function runProgram(name) {
-    switch (name) {
-        case 'github':
-            desktopHTML.innerHTML += getGithub()
-            reload()
+function runProgram() {
+    desktopHTML.innerHTML += getGithub()
+    desktopHTML.innerHTML += getCalc()
+    reload()
+}
+
+function openProgram(name) {
+    for(var i=0; i<programsHTML.length; i++){
+        if(programsHTML[i].className.indexOf(name)!=-1){
+            programsHTML[i].classList.remove('hidden')
+            programsHTML[i].onFocus(null)
             break
+        }
     }
 }
 
@@ -92,6 +144,10 @@ class Program {
         } else {
             this.setLocation(100, 100)
         }
+        this.headButtons = element.getElementsByClassName('program-circle')
+        this.headButtons[0].onclick = () => {
+            this.element.classList.add('hidden')
+        }
     }
     setLocation(x, y) {
         this.element.style.left = `${x}px`
@@ -99,3 +155,42 @@ class Program {
         this.pos = [x, y]
     }
 }
+
+function processCalcFuncBtn(element) {
+    var data = element.innerHTML
+    if (data == "AC") {
+        element.parent.resultHTML.innerHTML = ""
+        return
+    }
+    element.parent.writeSymbol(data)
+}
+
+function onClickCalcBtn() {
+
+    var data = Number(this.innerHTML)
+    if (isNaN(data)) {
+        processCalcFuncBtn(this)
+        return
+    }
+    this.parent.writeSymbol(data)
+}
+
+class Calculator extends Program {
+    constructor(element) {
+        super(element)
+        this.resultHTML = element.getElementsByClassName('calc-result-area')[0]
+        this.buttonsHTML = element.getElementsByClassName('calc-button')
+        this.init()
+    }
+    init() {
+        for (var i = 0; i < this.buttonsHTML.length; i++) {
+            this.buttonsHTML[i].parent = this
+            this.buttonsHTML[i].onclick = onClickCalcBtn
+        }
+    }
+    writeSymbol(data) {
+        this.resultHTML.innerHTML += data
+    }
+}
+
+runProgram()

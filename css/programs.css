@@ -1,3 +1,4 @@
+
 .github {
     background-color: #0d1117;
 }
@@ -108,4 +109,11 @@
 
 .calc-row:first-child>.calc-button:hover {
     background-color: #c4c1c1;
+}
+
+
+
+.hidden {
+    width: 0;
+    height: 0;
 }
